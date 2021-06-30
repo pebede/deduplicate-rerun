@@ -1,0 +1,19 @@
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+}
+textarea {
+    flex: auto;
+    height: 15rem;
+}
+button {
+    height: 2rem;
+}
+.hidden {
+    display: none;
+}
+.result {
+    display: flex;
+    flex-direction: column;
+}

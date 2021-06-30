@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rerun file deduplicator</title>
+    <script type="module" src="src/deduplicator.mjs"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form onsubmit="return false">
+        <fieldset>
+            <legend>Deduplicator form</legend>
+            <label for="rerun-input">Rerun count</label>
+            <input id="rerun-input" type="number" value="2"/>
+            <label for="text-input">Rerun file contents</label>
+            <textarea id="text-input"></textarea>
+            <button type="submit">Deduplicate</button>
+         </fieldset>
+    </form>
+    <div class="result">
+        <label for="text-output">Deduplicated rerun file</label>
+        <textarea id="text-output" readonly></textarea>
+    </div>
+    <script>
+        const deduplicate = (event) => {
+            event.preventDefault();
+            const input = document.querySelector('textarea#text-input').value;
+            const rerun = parseInt(document.querySelector('input#rerun-input').value, 10);
+            document.querySelector('textarea#text-output').value = deduplicator(input, rerun);
+            return false;
+        }
+        document.querySelector('form').addEventListener('submit', deduplicate);
+    </script>
+</body>
+</html>
